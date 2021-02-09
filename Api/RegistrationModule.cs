@@ -2,6 +2,7 @@
 using Infrabel.ICT.Framework.Extended.AspNetCore.Authorization;
 using Infrabel.ICT.Framework.Ioc;
 using Infrabel.ICT.Framework.Service;
+using Microsoft.AspNetCore.Authentication;
 using System.Reflection;
 
 namespace ICT.Template.Api
@@ -12,9 +13,13 @@ namespace ICT.Template.Api
             IRegistrationContainer container)
         {
             var types = assemblyTypesResolver.Resolve(Assembly.GetExecutingAssembly());
-              container.Register< ICT.Template.Core.Services.ISampleService , ICT.Template.Infrastructure.Services.SampleService>();
+            container.Register< ICT.Template.Core.Services.ISampleService , ICT.Template.Infrastructure.Services.SampleService>();
             container.BulkRegisterByMatchingEndName(types, "Service", RegistrationTarget.Interfaces);
             container.BulkRegisterByMatchingType<IIdentityClaimRefiner>(types, RegistrationTarget.Interfaces);
+           
+
+      
+
         }
     }
 }

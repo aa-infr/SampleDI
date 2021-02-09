@@ -42,20 +42,20 @@ namespace ICT.Template.Api
             var container = new Container();
 
             return Host.CreateDefaultBuilder(args)
-                       .UseServiceProviderFactory(context => new DryIocServiceProviderFactory(container))
+                       //.UseServiceProviderFactory(context => new DryIocServiceProviderFactory(container))
                        .ConfigureWebHostDefaults(webBuilder =>
                        {
                            webBuilder.ConfigureServices((context, services) =>
                                {
-                                   var optionsResolver = new OptionsResolver(context.Configuration);
-                                   var connectionStringResolver = new ConnectionStringResolver(context.Configuration);
-                                   DryIocBootstrapper.GetInstance()
-                                       .Initialize(container, optionsResolver, connectionStringResolver)
-                                       .LoadModules<Infrabel.ICT.Framework.RegistrationModule>()
-                                       .LoadModules<Infrabel.ICT.Framework.Extended.AspNetCore.RegistrationModule>()
-                                       .LoadModules<Infrabel.ICT.Framework.Extended.EntityFramework.RegistrationModule>()
-                                       .LoadModules<ICT.Template.Api.RegistrationModule>()
-                                       .BuildContainer();
+                                   //var optionsResolver = new OptionsResolver(context.Configuration);
+                                   //var connectionStringResolver = new ConnectionStringResolver(context.Configuration);
+                                   //DryIocBootstrapper.GetInstance()
+                                   //    .Initialize(container, optionsResolver, connectionStringResolver)
+                                   //    .LoadModules<Infrabel.ICT.Framework.RegistrationModule>()
+                                   //    .LoadModules<Infrabel.ICT.Framework.Extended.AspNetCore.RegistrationModule>()
+                                   //    .LoadModules<Infrabel.ICT.Framework.Extended.EntityFramework.RegistrationModule>()
+                                   //    .LoadModules<ICT.Template.Api.RegistrationModule>()
+                                   //    .BuildContainer();
                                })
                                .ConfigureKestrelListening()
                                .UseSerilog((builderContext, loggerConfig) =>

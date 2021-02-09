@@ -130,3 +130,213 @@ System.InvalidOperationException: Unable to resolve service for type 'ICT.Templa
    at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
    at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
    at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2021-02-09 18:00:06.773 +01:00 [FTL] Host terminated unexpectedly
+System.AggregateException: Some services are not able to be constructed (Error while validating the service descriptor 'ServiceType: Microsoft.AspNetCore.Authentication.IAuthenticationService Lifetime: Scoped ImplementationType: Microsoft.AspNetCore.Authentication.AuthenticationService': Unable to resolve service for type 'System.Func`1[Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.IIdentityClaimRefiner[]]' while attempting to activate 'Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.ClaimsRefinementTransformation'.) (Error while validating the service descriptor 'ServiceType: Microsoft.AspNetCore.Authentication.IClaimsTransformation Lifetime: Transient ImplementationType: Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.ClaimsRefinementTransformation': Unable to resolve service for type 'System.Func`1[Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.IIdentityClaimRefiner[]]' while attempting to activate 'Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.ClaimsRefinementTransformation'.)
+ ---> System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: Microsoft.AspNetCore.Authentication.IAuthenticationService Lifetime: Scoped ImplementationType: Microsoft.AspNetCore.Authentication.AuthenticationService': Unable to resolve service for type 'System.Func`1[Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.IIdentityClaimRefiner[]]' while attempting to activate 'Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.ClaimsRefinementTransformation'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'System.Func`1[Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.IIdentityClaimRefiner[]]' while attempting to activate 'Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.ClaimsRefinementTransformation'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(Type serviceType, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, Type serviceType, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, Type serviceType, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(Type serviceType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateCallSite(Type serviceType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.<>c__DisplayClass7_0.<GetCallSite>b__0(Type type)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(Type serviceType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(Type serviceType, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, Type serviceType, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, Type serviceType, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(IEnumerable`1 serviceDescriptors, ServiceProviderOptions options)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(IEnumerable`1 serviceDescriptors, ServiceProviderOptions options)
+   at Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider(IServiceCollection services, ServiceProviderOptions options)
+   at Microsoft.Extensions.DependencyInjection.DefaultServiceProviderFactory.CreateServiceProvider(IServiceCollection containerBuilder)
+   at Microsoft.Extensions.Hosting.Internal.ServiceFactoryAdapter`1.CreateServiceProvider(Object containerBuilder)
+   at Microsoft.Extensions.Hosting.HostBuilder.CreateServiceProvider()
+   at Microsoft.Extensions.Hosting.HostBuilder.Build()
+   at ICT.Template.Api.Program.Main(String[] args) in C:\dev\dependency injection\SampleDI\Api\Program.cs:line 22
+ ---> (Inner Exception #1) System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: Microsoft.AspNetCore.Authentication.IClaimsTransformation Lifetime: Transient ImplementationType: Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.ClaimsRefinementTransformation': Unable to resolve service for type 'System.Func`1[Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.IIdentityClaimRefiner[]]' while attempting to activate 'Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.ClaimsRefinementTransformation'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'System.Func`1[Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.IIdentityClaimRefiner[]]' while attempting to activate 'Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.ClaimsRefinementTransformation'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(Type serviceType, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, Type serviceType, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, Type serviceType, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(IEnumerable`1 serviceDescriptors, ServiceProviderOptions options)<---
+
+2021-02-09 18:00:52.386 +01:00 [FTL] Host terminated unexpectedly
+System.AggregateException: Some services are not able to be constructed (Error while validating the service descriptor 'ServiceType: Microsoft.AspNetCore.Authentication.IAuthenticationService Lifetime: Scoped ImplementationType: Microsoft.AspNetCore.Authentication.AuthenticationService': Unable to resolve service for type 'System.Func`1[Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.IIdentityClaimRefiner[]]' while attempting to activate 'Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.ClaimsRefinementTransformation'.) (Error while validating the service descriptor 'ServiceType: Microsoft.AspNetCore.Authentication.IClaimsTransformation Lifetime: Transient ImplementationType: Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.ClaimsRefinementTransformation': Unable to resolve service for type 'System.Func`1[Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.IIdentityClaimRefiner[]]' while attempting to activate 'Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.ClaimsRefinementTransformation'.)
+ ---> System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: Microsoft.AspNetCore.Authentication.IAuthenticationService Lifetime: Scoped ImplementationType: Microsoft.AspNetCore.Authentication.AuthenticationService': Unable to resolve service for type 'System.Func`1[Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.IIdentityClaimRefiner[]]' while attempting to activate 'Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.ClaimsRefinementTransformation'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'System.Func`1[Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.IIdentityClaimRefiner[]]' while attempting to activate 'Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.ClaimsRefinementTransformation'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(Type serviceType, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, Type serviceType, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, Type serviceType, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(Type serviceType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateCallSite(Type serviceType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.<>c__DisplayClass7_0.<GetCallSite>b__0(Type type)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(Type serviceType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(Type serviceType, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, Type serviceType, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, Type serviceType, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(IEnumerable`1 serviceDescriptors, ServiceProviderOptions options)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(IEnumerable`1 serviceDescriptors, ServiceProviderOptions options)
+   at Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider(IServiceCollection services, ServiceProviderOptions options)
+   at Microsoft.Extensions.DependencyInjection.DefaultServiceProviderFactory.CreateServiceProvider(IServiceCollection containerBuilder)
+   at Microsoft.Extensions.Hosting.Internal.ServiceFactoryAdapter`1.CreateServiceProvider(Object containerBuilder)
+   at Microsoft.Extensions.Hosting.HostBuilder.CreateServiceProvider()
+   at Microsoft.Extensions.Hosting.HostBuilder.Build()
+   at ICT.Template.Api.Program.Main(String[] args) in C:\dev\dependency injection\SampleDI\Api\Program.cs:line 22
+ ---> (Inner Exception #1) System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: Microsoft.AspNetCore.Authentication.IClaimsTransformation Lifetime: Transient ImplementationType: Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.ClaimsRefinementTransformation': Unable to resolve service for type 'System.Func`1[Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.IIdentityClaimRefiner[]]' while attempting to activate 'Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.ClaimsRefinementTransformation'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'System.Func`1[Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.IIdentityClaimRefiner[]]' while attempting to activate 'Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.ClaimsRefinementTransformation'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(Type serviceType, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, Type serviceType, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, Type serviceType, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(IEnumerable`1 serviceDescriptors, ServiceProviderOptions options)<---
+
+2021-02-09 18:03:51.729 +01:00 [FTL] Host terminated unexpectedly
+System.AggregateException: Some services are not able to be constructed (Error while validating the service descriptor 'ServiceType: Microsoft.AspNetCore.Authentication.IAuthenticationService Lifetime: Scoped ImplementationType: Microsoft.AspNetCore.Authentication.AuthenticationService': Unable to resolve service for type 'System.Func`1[Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.IIdentityClaimRefiner[]]' while attempting to activate 'Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.ClaimsRefinementTransformation'.) (Error while validating the service descriptor 'ServiceType: Microsoft.AspNetCore.Authentication.IClaimsTransformation Lifetime: Transient ImplementationType: Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.ClaimsRefinementTransformation': Unable to resolve service for type 'System.Func`1[Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.IIdentityClaimRefiner[]]' while attempting to activate 'Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.ClaimsRefinementTransformation'.)
+ ---> System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: Microsoft.AspNetCore.Authentication.IAuthenticationService Lifetime: Scoped ImplementationType: Microsoft.AspNetCore.Authentication.AuthenticationService': Unable to resolve service for type 'System.Func`1[Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.IIdentityClaimRefiner[]]' while attempting to activate 'Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.ClaimsRefinementTransformation'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'System.Func`1[Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.IIdentityClaimRefiner[]]' while attempting to activate 'Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.ClaimsRefinementTransformation'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(Type serviceType, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, Type serviceType, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, Type serviceType, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(Type serviceType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateCallSite(Type serviceType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.<>c__DisplayClass7_0.<GetCallSite>b__0(Type type)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(Type serviceType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(Type serviceType, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, Type serviceType, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, Type serviceType, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(IEnumerable`1 serviceDescriptors, ServiceProviderOptions options)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(IEnumerable`1 serviceDescriptors, ServiceProviderOptions options)
+   at Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider(IServiceCollection services, ServiceProviderOptions options)
+   at Microsoft.Extensions.DependencyInjection.DefaultServiceProviderFactory.CreateServiceProvider(IServiceCollection containerBuilder)
+   at Microsoft.Extensions.Hosting.Internal.ServiceFactoryAdapter`1.CreateServiceProvider(Object containerBuilder)
+   at Microsoft.Extensions.Hosting.HostBuilder.CreateServiceProvider()
+   at Microsoft.Extensions.Hosting.HostBuilder.Build()
+   at ICT.Template.Api.Program.Main(String[] args) in C:\dev\dependency injection\SampleDI\Api\Program.cs:line 22
+ ---> (Inner Exception #1) System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: Microsoft.AspNetCore.Authentication.IClaimsTransformation Lifetime: Transient ImplementationType: Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.ClaimsRefinementTransformation': Unable to resolve service for type 'System.Func`1[Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.IIdentityClaimRefiner[]]' while attempting to activate 'Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.ClaimsRefinementTransformation'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'System.Func`1[Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.IIdentityClaimRefiner[]]' while attempting to activate 'Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.ClaimsRefinementTransformation'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(Type serviceType, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, Type serviceType, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, Type serviceType, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(IEnumerable`1 serviceDescriptors, ServiceProviderOptions options)<---
+
+2021-02-09 18:13:07.347 +01:00 [ERR] An unhandled exception has occurred while executing the request.
+DryIoc.ContainerException: code: Error.UnableToResolveUnknownService;
+message: Unable to resolve Resolution root ICT.Template.Api.Controllers.SamplesController
+  from container without scope
+Where no service registrations found
+  and no dynamic registrations found in 0 of Rules.DynamicServiceProviders
+  and nothing found in 0 of Rules.UnknownServiceResolvers
+   at DryIoc.Throw.It(Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in /_/src/DryIoc/Container.cs:line 12985
+   at DryIoc.Container.TryThrowUnableToResolve(Request request) in /_/src/DryIoc/Container.cs:line 1079
+   at DryIoc.Container.DryIoc.IContainer.ResolveFactory(Request request) in /_/src/DryIoc/Container.cs:line 1058
+   at DryIoc.Container.ResolveAndCache(Int32 serviceTypeHash, Type serviceType, IfUnresolved ifUnresolved) in /_/src/DryIoc/Container.cs:line 364
+   at DryIoc.Container.DryIoc.IResolver.Resolve(Type serviceType, IfUnresolved ifUnresolved) in /_/src/DryIoc/Container.cs:line 353
+   at DryIoc.Resolver.Resolve(IResolver resolver, Type serviceType) in /_/src/DryIoc/Container.cs:line 7642
+   at ICT.Template.Api.DryIocControllerActivator.Create(ControllerContext context) in C:\dev\dependency injection\SampleDI\Api\DryIocControllerActivator.cs:line 28
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass5_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2021-02-09 18:15:25.020 +01:00 [ERR] An unhandled exception has occurred while executing the request.
+DryIoc.ContainerException: code: Error.UnableToResolveUnknownService;
+message: Unable to resolve Resolution root ICT.Template.Api.Controllers.SamplesController
+  from container without scope
+Where no service registrations found
+  and no dynamic registrations found in 0 of Rules.DynamicServiceProviders
+  and nothing found in 0 of Rules.UnknownServiceResolvers
+   at DryIoc.Throw.It(Int32 error, Object arg0, Object arg1, Object arg2, Object arg3) in /_/src/DryIoc/Container.cs:line 12985
+   at DryIoc.Container.TryThrowUnableToResolve(Request request) in /_/src/DryIoc/Container.cs:line 1079
+   at DryIoc.Container.DryIoc.IContainer.ResolveFactory(Request request) in /_/src/DryIoc/Container.cs:line 1058
+   at DryIoc.Container.ResolveAndCache(Int32 serviceTypeHash, Type serviceType, IfUnresolved ifUnresolved) in /_/src/DryIoc/Container.cs:line 364
+   at DryIoc.Container.DryIoc.IResolver.Resolve(Type serviceType, IfUnresolved ifUnresolved) in /_/src/DryIoc/Container.cs:line 353
+   at DryIoc.Resolver.Resolve(IResolver resolver, Type serviceType) in /_/src/DryIoc/Container.cs:line 7642
+   at ICT.Template.Api.DryIocControllerActivator.Create(ControllerContext context) in C:\dev\dependency injection\SampleDI\Api\DryIocControllerActivator.cs:line 28
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass5_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2021-02-09 18:18:04.635 +01:00 [FTL] Host terminated unexpectedly
+System.AggregateException: Some services are not able to be constructed (Error while validating the service descriptor 'ServiceType: Microsoft.AspNetCore.Authentication.IAuthenticationService Lifetime: Scoped ImplementationType: Microsoft.AspNetCore.Authentication.AuthenticationService': Unable to resolve service for type 'System.Func`1[Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.IIdentityClaimRefiner[]]' while attempting to activate 'Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.ClaimsRefinementTransformation'.) (Error while validating the service descriptor 'ServiceType: Microsoft.AspNetCore.Authentication.IClaimsTransformation Lifetime: Transient ImplementationType: Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.ClaimsRefinementTransformation': Unable to resolve service for type 'System.Func`1[Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.IIdentityClaimRefiner[]]' while attempting to activate 'Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.ClaimsRefinementTransformation'.)
+ ---> System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: Microsoft.AspNetCore.Authentication.IAuthenticationService Lifetime: Scoped ImplementationType: Microsoft.AspNetCore.Authentication.AuthenticationService': Unable to resolve service for type 'System.Func`1[Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.IIdentityClaimRefiner[]]' while attempting to activate 'Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.ClaimsRefinementTransformation'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'System.Func`1[Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.IIdentityClaimRefiner[]]' while attempting to activate 'Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.ClaimsRefinementTransformation'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(Type serviceType, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, Type serviceType, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, Type serviceType, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(Type serviceType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateCallSite(Type serviceType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.<>c__DisplayClass7_0.<GetCallSite>b__0(Type type)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(Type serviceType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(Type serviceType, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, Type serviceType, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, Type serviceType, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(IEnumerable`1 serviceDescriptors, ServiceProviderOptions options)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(IEnumerable`1 serviceDescriptors, ServiceProviderOptions options)
+   at Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider(IServiceCollection services, ServiceProviderOptions options)
+   at Microsoft.Extensions.DependencyInjection.DefaultServiceProviderFactory.CreateServiceProvider(IServiceCollection containerBuilder)
+   at Microsoft.Extensions.Hosting.Internal.ServiceFactoryAdapter`1.CreateServiceProvider(Object containerBuilder)
+   at Microsoft.Extensions.Hosting.HostBuilder.CreateServiceProvider()
+   at Microsoft.Extensions.Hosting.HostBuilder.Build()
+   at ICT.Template.Api.Program.Main(String[] args) in C:\dev\dependency injection\SampleDI\Api\Program.cs:line 22
+ ---> (Inner Exception #1) System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: Microsoft.AspNetCore.Authentication.IClaimsTransformation Lifetime: Transient ImplementationType: Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.ClaimsRefinementTransformation': Unable to resolve service for type 'System.Func`1[Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.IIdentityClaimRefiner[]]' while attempting to activate 'Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.ClaimsRefinementTransformation'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'System.Func`1[Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.IIdentityClaimRefiner[]]' while attempting to activate 'Infrabel.ICT.Framework.Extended.AspNetCore.Authorization.ClaimsRefinementTransformation'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(Type serviceType, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, Type serviceType, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, Type serviceType, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(IEnumerable`1 serviceDescriptors, ServiceProviderOptions options)<---
+
