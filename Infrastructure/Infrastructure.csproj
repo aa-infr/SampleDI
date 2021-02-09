@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>ICT.Template.Infrastructure</AssemblyName>
+    <RootNamespace>ICT.Template.Infrastructure</RootNamespace>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\Configurations\MappingRules\**" />
+    <EmbeddedResource Remove="Data\Configurations\MappingRules\**" />
+    <None Remove="Data\Configurations\MappingRules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.7" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj" />
+    <ProjectReference Include="..\Framework\EntityFramework\EntityFramework.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Validators\" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Infrabel.ICT.Framework.Extended.AspNetCore</id>
+    <version>1.3.76</version>
+    <authors>I-ICT.412</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Package Description</description>
+    <copyright>Infrabel © I-ICT.412 2019</copyright>
+    <dependencies>
+      <group targetFramework=".NETCoreApp3.1">
+        <dependency id="Infrabel.ICT.Framework" version="1.3.76" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNetCore.Authentication.JwtBearer" version="3.1.7" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNetCore.Authentication.Negotiate" version="3.1.7" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNetCore.JsonPatch" version="3.1.7" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNetCore.Mvc.NewtonsoftJson" version="3.1.7" exclude="Build,Analyzers" />
+        <dependency id="Newtonsoft.Json" version="12.0.3" exclude="Build,Analyzers" />
+        <dependency id="Newtonsoft.Json.Bson" version="1.0.2" exclude="Build,Analyzers" />
+        <dependency id="Serilog" version="2.9.0" exclude="Build,Analyzers" />
+        <dependency id="Serilog.AspNetCore" version="3.4.0" exclude="Build,Analyzers" />
+        <dependency id="Serilog.Extensions.Logging" version="3.0.1" exclude="Build,Analyzers" />
+        <dependency id="Serilog.Settings.Configuration" version="3.1.0" exclude="Build,Analyzers" />
+        <dependency id="Serilog.Sinks.Async" version="1.4.0" exclude="Build,Analyzers" />
+        <dependency id="Serilog.Sinks.Console" version="3.1.1" exclude="Build,Analyzers" />
+        <dependency id="Serilog.Sinks.File" version="4.1.0" exclude="Build,Analyzers" />
+        <dependency id="Serilog.Sinks.RollingFile" version="3.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.Security.Principal.Windows" version="4.7.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkReferences>
+      <group targetFramework=".NETCoreApp3.1">
+        <frameworkReference name="Microsoft.AspNetCore.App" />
+      </group>
+    </frameworkReferences>
+    <contentFiles>
+      <files include="any/netcoreapp3.1/Properties/launchSettings.json" buildAction="Content" />
+    </contentFiles>
+  </metadata>
+  <files>
+    <file src="C:\dev\i-ict-414\i-ict-412-framework\framework\src\Framework\AspNetCore\bin\Release\netcoreapp3.1\Infrabel.ICT.Framework.Extended.AspNetCore.runtimeconfig.json" target="lib\netcoreapp3.1\Infrabel.ICT.Framework.Extended.AspNetCore.runtimeconfig.json" />
+    <file src="C:\dev\i-ict-414\i-ict-412-framework\framework\src\Framework\AspNetCore\bin\Release\netcoreapp3.1\Infrabel.ICT.Framework.Extended.AspNetCore.dll" target="lib\netcoreapp3.1\Infrabel.ICT.Framework.Extended.AspNetCore.dll" />
+    <file src="C:\dev\i-ict-414\i-ict-412-framework\framework\src\Framework\AspNetCore\Properties\launchSettings.json" target="content\Properties\launchSettings.json" />
+    <file src="C:\dev\i-ict-414\i-ict-412-framework\framework\src\Framework\AspNetCore\Properties\launchSettings.json" target="contentFiles\any\netcoreapp3.1\Properties\launchSettings.json" />
+  </files>
+</package>

@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>Infrabel.ICT.Framework.Extended.DryIoc</AssemblyName>
+    <RootNamespace>Infrabel.ICT.Framework.Extended.DryIoc</RootNamespace>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DryIoc.dll" Version="4.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\framework\Core\Framework.csproj" />
+  </ItemGroup>
+</Project>

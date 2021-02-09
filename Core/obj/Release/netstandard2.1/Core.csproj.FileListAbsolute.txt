@@ -1,0 +1,16 @@
+C:\dev\i-ict-414\i-ict-412-framework\framework\src\Core\bin\Release\netstandard2.1\ICT.Template.Core.deps.json
+C:\dev\i-ict-414\i-ict-412-framework\framework\src\Core\bin\Release\netstandard2.1\ICT.Template.Core.dll
+C:\dev\i-ict-414\i-ict-412-framework\framework\src\Core\bin\Release\netstandard2.1\ICT.Template.Core.pdb
+C:\dev\i-ict-414\i-ict-412-framework\framework\src\Core\bin\Release\netstandard2.1\ICT.Template.CrossCutting.dll
+C:\dev\i-ict-414\i-ict-412-framework\framework\src\Core\bin\Release\netstandard2.1\Infrabel.ICT.Framework.dll
+C:\dev\i-ict-414\i-ict-412-framework\framework\src\Core\bin\Release\netstandard2.1\Infrabel.ICT.Framework.Extended.AutoMapper.dll
+C:\dev\i-ict-414\i-ict-412-framework\framework\src\Core\bin\Release\netstandard2.1\ICT.Template.CrossCutting.pdb
+C:\dev\i-ict-414\i-ict-412-framework\framework\src\Core\bin\Release\netstandard2.1\Infrabel.ICT.Framework.pdb
+C:\dev\i-ict-414\i-ict-412-framework\framework\src\Core\bin\Release\netstandard2.1\Infrabel.ICT.Framework.Extended.AutoMapper.pdb
+C:\dev\i-ict-414\i-ict-412-framework\framework\src\Core\obj\Release\netstandard2.1\Core.csprojAssemblyReference.cache
+C:\dev\i-ict-414\i-ict-412-framework\framework\src\Core\obj\Release\netstandard2.1\Core.AssemblyInfoInputs.cache
+C:\dev\i-ict-414\i-ict-412-framework\framework\src\Core\obj\Release\netstandard2.1\Core.AssemblyInfo.cs
+C:\dev\i-ict-414\i-ict-412-framework\framework\src\Core\obj\Release\netstandard2.1\Core.csproj.CoreCompileInputs.cache
+C:\dev\i-ict-414\i-ict-412-framework\framework\src\Core\obj\Release\netstandard2.1\Core.csproj.CopyComplete
+C:\dev\i-ict-414\i-ict-412-framework\framework\src\Core\obj\Release\netstandard2.1\ICT.Template.Core.dll
+C:\dev\i-ict-414\i-ict-412-framework\framework\src\Core\obj\Release\netstandard2.1\ICT.Template.Core.pdb

@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>Infrabel.ICT.Framework.Extended.EntityFramework</AssemblyName>
+    <RootNamespace>Infrabel.ICT.Framework.Extended.EntityFramework</RootNamespace>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="3.1.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.7" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Framework.csproj" />
+  </ItemGroup>
+</Project>

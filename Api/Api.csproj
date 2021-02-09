@@ -1,0 +1,90 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <AssemblyName>ICT.Template.Api</AssemblyName>
+    <RootNamespace>ICT.Template.Api</RootNamespace>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="logs\**" />
+    <Content Remove="logs\**" />
+    <EmbeddedResource Remove="logs\**" />
+    <None Remove="logs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="appsettings.Debug.json" />
+    <Content Remove="appsettings.Release.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="appsettings.Debug.json">
+      <IsTransformFile>true</IsTransformFile>
+      <DependentUpon>appsettings.json</DependentUpon>
+    </None>
+    <None Include="appsettings.Release.json">
+      <IsTransformFile>true</IsTransformFile>
+      <DependentUpon>appsettings.json</DependentUpon>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DryIoc.Microsoft.DependencyInjection" Version="4.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Negotiate" Version="3.1.7" />
+    <PackageReference Include="Microsoft.VisualStudio.SlowCheetah" Version="3.2.26">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj" />
+    <ProjectReference Include="..\DryIoc\DryIoc.csproj" />
+    <ProjectReference Include="..\framework\AspNetCore\AspNetCore.csproj" />
+    <ProjectReference Include="..\Framework\Core\Framework.csproj" />
+    <ProjectReference Include="..\Framework\EntityFramework\EntityFramework.csproj" />
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resources\CodeTranslations.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CodeTranslations.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\FullTextTranslations.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FullTextTranslations.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="appsettings.json">
+      <TransformOnBuild>true</TransformOnBuild>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\CodeTranslations.fr.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\CodeTranslations.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CodeTranslations.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\FullTextTranslations.fr.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\FullTextTranslations.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>FullTextTranslations.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Mappings\" />
+  </ItemGroup>
+</Project>

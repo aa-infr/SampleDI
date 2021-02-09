@@ -1,0 +1,24 @@
+C:\dev\i-ict-414\i-ict-412-framework\framework\src\Framework\DryIoc\bin\Debug\netstandard2.0\Infrabel.ICT.Framework.Extended.DryIoc.deps.json
+C:\dev\i-ict-414\i-ict-412-framework\framework\src\Framework\DryIoc\bin\Debug\netstandard2.0\Infrabel.ICT.Framework.Extended.DryIoc.dll
+C:\dev\i-ict-414\i-ict-412-framework\framework\src\Framework\DryIoc\bin\Debug\netstandard2.0\Infrabel.ICT.Framework.Extended.DryIoc.pdb
+C:\dev\i-ict-414\i-ict-412-framework\framework\src\Framework\DryIoc\bin\Debug\netstandard2.0\Infrabel.ICT.Framework.dll
+C:\dev\i-ict-414\i-ict-412-framework\framework\src\Framework\DryIoc\bin\Debug\netstandard2.0\Infrabel.ICT.Framework.pdb
+C:\dev\i-ict-414\i-ict-412-framework\framework\src\Framework\DryIoc\obj\Debug\netstandard2.0\DryIoc.csprojAssemblyReference.cache
+C:\dev\i-ict-414\i-ict-412-framework\framework\src\Framework\DryIoc\obj\Debug\netstandard2.0\DryIoc.AssemblyInfoInputs.cache
+C:\dev\i-ict-414\i-ict-412-framework\framework\src\Framework\DryIoc\obj\Debug\netstandard2.0\DryIoc.AssemblyInfo.cs
+C:\dev\i-ict-414\i-ict-412-framework\framework\src\Framework\DryIoc\obj\Debug\netstandard2.0\DryIoc.csproj.CoreCompileInputs.cache
+C:\dev\i-ict-414\i-ict-412-framework\framework\src\Framework\DryIoc\obj\Debug\netstandard2.0\DryIoc.csproj.CopyComplete
+C:\dev\i-ict-414\i-ict-412-framework\framework\src\Framework\DryIoc\obj\Debug\netstandard2.0\Infrabel.ICT.Framework.Extended.DryIoc.dll
+C:\dev\i-ict-414\i-ict-412-framework\framework\src\Framework\DryIoc\obj\Debug\netstandard2.0\Infrabel.ICT.Framework.Extended.DryIoc.pdb
+C:\dev\dependency injection\SampleDI\DryIoc\bin\Debug\netstandard2.0\Infrabel.ICT.Framework.Extended.DryIoc.deps.json
+C:\dev\dependency injection\SampleDI\DryIoc\bin\Debug\netstandard2.0\Infrabel.ICT.Framework.Extended.DryIoc.dll
+C:\dev\dependency injection\SampleDI\DryIoc\bin\Debug\netstandard2.0\Infrabel.ICT.Framework.Extended.DryIoc.pdb
+C:\dev\dependency injection\SampleDI\DryIoc\bin\Debug\netstandard2.0\Infrabel.ICT.Framework.dll
+C:\dev\dependency injection\SampleDI\DryIoc\bin\Debug\netstandard2.0\Infrabel.ICT.Framework.pdb
+C:\dev\dependency injection\SampleDI\DryIoc\obj\Debug\netstandard2.0\DryIoc.csprojAssemblyReference.cache
+C:\dev\dependency injection\SampleDI\DryIoc\obj\Debug\netstandard2.0\DryIoc.AssemblyInfoInputs.cache
+C:\dev\dependency injection\SampleDI\DryIoc\obj\Debug\netstandard2.0\DryIoc.AssemblyInfo.cs
+C:\dev\dependency injection\SampleDI\DryIoc\obj\Debug\netstandard2.0\DryIoc.csproj.CoreCompileInputs.cache
+C:\dev\dependency injection\SampleDI\DryIoc\obj\Debug\netstandard2.0\DryIoc.csproj.CopyComplete
+C:\dev\dependency injection\SampleDI\DryIoc\obj\Debug\netstandard2.0\Infrabel.ICT.Framework.Extended.DryIoc.dll
+C:\dev\dependency injection\SampleDI\DryIoc\obj\Debug\netstandard2.0\Infrabel.ICT.Framework.Extended.DryIoc.pdb

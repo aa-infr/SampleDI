@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Infrabel.ICT.Framework.Extended.EntityFramework</id>
+    <version>1.3.76</version>
+    <authors>I-ICT.412</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Package Description</description>
+    <copyright>Infrabel © I-ICT.412 2019</copyright>
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Infrabel.ICT.Framework" version="1.3.76" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.CSharp" version="4.7.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.EntityFrameworkCore" version="3.1.7" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.EntityFrameworkCore.Abstractions" version="3.1.7" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.EntityFrameworkCore.Relational" version="3.1.7" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Logging.Debug" version="3.1.7" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\dev\i-ict-414\i-ict-412-framework\framework\src\Framework\EntityFramework\bin\Release\netstandard2.0\Infrabel.ICT.Framework.Extended.EntityFramework.pdb" target="lib\netstandard2.0\Infrabel.ICT.Framework.Extended.EntityFramework.pdb" />
+    <file src="C:\dev\i-ict-414\i-ict-412-framework\framework\src\Framework\EntityFramework\bin\Release\netstandard2.0\Infrabel.ICT.Framework.Extended.EntityFramework.dll" target="lib\netstandard2.0\Infrabel.ICT.Framework.Extended.EntityFramework.dll" />
+  </files>
+</package>

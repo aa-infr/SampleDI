@@ -1,0 +1,17 @@
+C:\dev\i-ict-414\i-ict-412-framework\framework\src\Framework\Core\bin\Debug\netstandard2.0\Infrabel.ICT.Framework.deps.json
+C:\dev\i-ict-414\i-ict-412-framework\framework\src\Framework\Core\bin\Debug\netstandard2.0\Infrabel.ICT.Framework.dll
+C:\dev\i-ict-414\i-ict-412-framework\framework\src\Framework\Core\bin\Debug\netstandard2.0\Infrabel.ICT.Framework.pdb
+C:\dev\i-ict-414\i-ict-412-framework\framework\src\Framework\Core\obj\Debug\netstandard2.0\Framework.csprojAssemblyReference.cache
+C:\dev\i-ict-414\i-ict-412-framework\framework\src\Framework\Core\obj\Debug\netstandard2.0\Framework.AssemblyInfoInputs.cache
+C:\dev\i-ict-414\i-ict-412-framework\framework\src\Framework\Core\obj\Debug\netstandard2.0\Framework.AssemblyInfo.cs
+C:\dev\i-ict-414\i-ict-412-framework\framework\src\Framework\Core\obj\Debug\netstandard2.0\Framework.csproj.CoreCompileInputs.cache
+C:\dev\i-ict-414\i-ict-412-framework\framework\src\Framework\Core\obj\Debug\netstandard2.0\Infrabel.ICT.Framework.dll
+C:\dev\i-ict-414\i-ict-412-framework\framework\src\Framework\Core\obj\Debug\netstandard2.0\Infrabel.ICT.Framework.pdb
+C:\dev\dependency injection\SampleDI\framework\Core\bin\Debug\netstandard2.0\Infrabel.ICT.Framework.deps.json
+C:\dev\dependency injection\SampleDI\framework\Core\bin\Debug\netstandard2.0\Infrabel.ICT.Framework.dll
+C:\dev\dependency injection\SampleDI\framework\Core\bin\Debug\netstandard2.0\Infrabel.ICT.Framework.pdb
+C:\dev\dependency injection\SampleDI\framework\Core\obj\Debug\netstandard2.0\Framework.AssemblyInfoInputs.cache
+C:\dev\dependency injection\SampleDI\framework\Core\obj\Debug\netstandard2.0\Framework.AssemblyInfo.cs
+C:\dev\dependency injection\SampleDI\framework\Core\obj\Debug\netstandard2.0\Framework.csproj.CoreCompileInputs.cache
+C:\dev\dependency injection\SampleDI\framework\Core\obj\Debug\netstandard2.0\Infrabel.ICT.Framework.dll
+C:\dev\dependency injection\SampleDI\framework\Core\obj\Debug\netstandard2.0\Infrabel.ICT.Framework.pdb
