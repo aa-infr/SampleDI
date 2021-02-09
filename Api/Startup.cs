@@ -24,7 +24,7 @@ namespace ICT.Template.Api
     {
         private readonly OptionsResolver _optionsResolver;
         private readonly ICustomMediaTypeService _customMediaTypeService;
-    private readonly ConnectionStringResolver _connectionStringResolver;
+        private readonly ConnectionStringResolver _connectionStringResolver;
 
         public Startup(IConfiguration configuration)
         {
@@ -34,10 +34,10 @@ namespace ICT.Template.Api
             _customMediaTypeService = new CustomMediaTypeService();
         }
 
-      public IConfiguration Configuration { get; }
+        public IConfiguration Configuration { get; }
 
-    // This method gets called by the runtime. Use this method to add services to the container.
-    public void ConfigureServices(IServiceCollection services)
+        // This method gets called by the runtime. Use this method to add services to the container.
+        public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
 

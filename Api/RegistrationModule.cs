@@ -16,10 +16,11 @@ namespace ICT.Template.Api
             container.Register< ICT.Template.Core.Services.ISampleService , ICT.Template.Infrastructure.Services.SampleService>();
             container.BulkRegisterByMatchingEndName(types, "Service", RegistrationTarget.Interfaces);
             container.BulkRegisterByMatchingType<IIdentityClaimRefiner>(types, RegistrationTarget.Interfaces);
-           
+            container.Register<IClaimsTransformation, ClaimsRefinementTransformation>(RegistrationLifeTime.Transient);
 
-      
 
-        }
+
+
+    }
     }
 }
