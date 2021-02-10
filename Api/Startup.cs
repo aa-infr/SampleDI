@@ -1,11 +1,11 @@
-using DryIoc;
+using SimpleInjector;
 using ICT.Template.Api.Services;
 using Infrabel.ICT.Framework.Extended.AspNetCore.Authorization;
 using Infrabel.ICT.Framework.Extended.AspNetCore.Extension;
 using Infrabel.ICT.Framework.Extended.AspNetCore.Middleware;
 using Infrabel.ICT.Framework.Extended.AspNetCore.Option;
 using Infrabel.ICT.Framework.Extended.AspNetCore.Resolver;
-using Infrabel.ICT.Framework.Extended.DryIoc;
+using Infrabel.ICT.Framework.Extended.SimpleInjectorIoc;
 using Infrabel.ICT.Framework.Service;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
@@ -17,6 +17,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using JsonOptions = Infrabel.ICT.Framework.Extended.AspNetCore.Option.JsonOptions;
+using SimpleInjector.Lifestyles;
 
 namespace ICT.Template.Api
 {
@@ -42,7 +43,12 @@ namespace ICT.Template.Api
             services.AddControllersWithViews();
 
             var container = new Container();
-            DryIocBootstrapper.GetInstance()
+            // Default lifestyle scoped + async
+            // The recommendation is to use AsyncScopedLifestyle in for applications that solely consist of a Web API(or other asynchronous technologies such as ASP.NET Core)
+            container.Options.DefaultScopedLifestyle = new AsyncScopedLifestyle();
+            container.Options.AllowOverridingRegistrations = true;
+
+            SimpleInjectorIocBootstrapper.GetInstance()
                 .Initialize(container, _optionsResolver, _connectionStringResolver)
                 .LoadModules<Infrabel.ICT.Framework.RegistrationModule>()
                 .LoadModules<Infrabel.ICT.Framework.Extended.AspNetCore.RegistrationModule>()
@@ -51,45 +57,53 @@ namespace ICT.Template.Api
                 .BuildContainer();
 
 
-          // Replace the built-in IControllerActivator with a custom one that forwards the call to DryIoc.
-          services.AddSingleton<IControllerActivator>(new DryIocControllerActivator(container));
+            // Replace the built-in IControllerActivator with a custom one that forwards the call to SimpleInjectorIoc.
+            services.AddSingleton<IControllerActivator>(new SimpleInjectorIocControllerActivator(container));
+
+            // Wrap AspNet requests into Simpleinjector's scoped lifestyle
+            services.UseSimpleInjectorAspNetRequestScoping(container);
+
+            services.AddControllers(_customMediaTypeService, _optionsResolver.Resolve<JsonOptions>);
 
 
-          services.AddControllers(_customMediaTypeService, _optionsResolver.Resolve<JsonOptions>);
-          services.AddTransient<IClaimsTransformation, ClaimsRefinementTransformation>();
+            services.AddSingleton<IEnvironmentInfoService>(new EnvironmentInfoService());
+            //services.AddTransient<IClaimsTransformation, ClaimsRefinementTransformation>();
 
-          services.AddMemoryCache()
-              .AddCors()
-              .Configure<ApiBehaviorOptions>(options => { options.SuppressModelStateInvalidFilter = true; })
-              .AddSwaggerGen(c => c.SwaggerDoc("v1", new OpenApiInfo { Title = "ICT-Template API", Version = "v1" }))
-              .AddHttpClient();
+            services.AddMemoryCache()
+                .AddCors()
+                .AddAuthenticationAndAuthorization(_optionsResolver.Resolve<AuthenticationAndAuthorizationOptions>)
+                .Configure<ApiBehaviorOptions>(options => { options.SuppressModelStateInvalidFilter = true; })
+                .AddSwaggerGen(c => c.SwaggerDoc("v1", new OpenApiInfo { Title = "ICT-Template API", Version = "v1" }))
+                .AddHttpClient();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage()
-                   .UseSwagger()
-                   .UseSwaggerUI(c =>
-                    {
-                        c.SwaggerEndpoint("/swagger/v1/swagger.json", "ICT-Template API");
-                        c.RoutePrefix = string.Empty;
-                    });
-            }
+          if (env.IsDevelopment())
+          {
+            app.UseDeveloperExceptionPage()
+               .UseSwagger()
+               .UseSwaggerUI(c =>
+               {
+                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "ICT-Template API");
+                 c.RoutePrefix = string.Empty;
+               });
+          }
 
-            app
-               .UseForwardersConfiguration(_optionsResolver.Resolve<KestrelOptions>)
-               .UseCorsConfiguration(_optionsResolver.Resolve<CorsOptions>)
-               .UseHttpsRedirection()
-               .UseRouting()
-               .UseRequestLocalization(_optionsResolver.Resolve<LocalizationOptions>)
-               .UseResponseCompression(_optionsResolver.Resolve<CompressionOptions>)
-               .UseEndpoints(endpoints =>
-                 {
-                     endpoints.MapControllers();
-                 });
+          app.UseAuthentication()
+             .UseMiddleware<LoggingMiddleware>()
+             .UseForwardersConfiguration(_optionsResolver.Resolve<KestrelOptions>)
+             .UseCorsConfiguration(_optionsResolver.Resolve<CorsOptions>)
+             .UseHttpsRedirection()
+             .UseRouting()
+             .UseAuthorization()
+             .UseRequestLocalization(_optionsResolver.Resolve<LocalizationOptions>)
+             .UseResponseCompression(_optionsResolver.Resolve<CompressionOptions>)
+             .UseEndpoints(endpoints =>
+             {
+               endpoints.MapControllers();
+             });
         }
-    }
+  }
 }

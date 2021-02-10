@@ -1,0 +1,167 @@
+﻿using SimpleInjector;
+using Infrabel.ICT.Framework.Extension;
+using Infrabel.ICT.Framework.Ioc;
+using System;
+using System.Linq;
+
+namespace Infrabel.ICT.Framework.Extended.SimpleInjectorIoc
+{
+  public class SimpleInjectorIocContainerAdapter : IRegistrationContainer
+  {
+    private readonly Container _container;
+
+    private SimpleInjectorIocContainerAdapter(Container container)
+    {
+      _container = container ?? throw new ArgumentNullException(nameof(container));
+    }
+
+    public IRegistrationContainer Register<TConcrete>(RegistrationTarget target, RegistrationLifeTime registrationLifeTime = RegistrationLifeTime.Transient, string key = null, bool shouldReplace = false)
+    {
+      return Register(typeof(TConcrete), target, registrationLifeTime, key, shouldReplace);
+    }
+
+    public IRegistrationContainer BulkRegisterByMatchingType<TMatchingType>(ILookup<RegistrationInfo, Type> lookup, RegistrationTarget target)
+    {
+      return BulkRegisterByMatchingType(typeof(TMatchingType), lookup, target);
+    }
+
+    public IRegistrationContainer BulkRegisterByMatchingType(Type matchingType, ILookup<RegistrationInfo, Type> lookup, RegistrationTarget target)
+    {
+      IterateAndRegister(lookup, t => t.IsBasedOnGenericType(matchingType) || matchingType.IsAssignableFrom(t), target);
+      return this;
+    }
+
+    public IRegistrationContainer BulkRegisterByMatchingNamespace(ILookup<RegistrationInfo, Type> lookup, string matchingNamespace,
+        RegistrationTarget target)
+    {
+      IterateAndRegister(lookup, t => string.Equals(t.Namespace, matchingNamespace, StringComparison.OrdinalIgnoreCase), target);
+      return this;
+    }
+
+    public IRegistrationContainer BulkRegisterByMatchingNamespaceWithChildren(ILookup<RegistrationInfo, Type> lookup, string matchingNamespace,
+        RegistrationTarget target)
+    {
+      IterateAndRegister(lookup, t => t.Namespace?.StartsWith(matchingNamespace, StringComparison.OrdinalIgnoreCase) ?? false, target);
+      return this;
+    }
+
+    public IRegistrationContainer BulkRegisterByMatchingEndName(ILookup<RegistrationInfo, Type> lookup, string matchingEndName,
+        RegistrationTarget target)
+    {
+      if (string.IsNullOrWhiteSpace(matchingEndName))
+        return this;
+
+      var genericEndName = $"{matchingEndName}`1";
+
+      IterateAndRegister(lookup, t => t.Name.EndsWith(matchingEndName, StringComparison.OrdinalIgnoreCase) || t.Name.EndsWith(genericEndName, StringComparison.OrdinalIgnoreCase), target);
+      return this;
+    }
+
+    public IRegistrationContainer BulkRegisterByPredicate(ILookup<RegistrationInfo, Type> lookup, Func<Type, bool> predicate, RegistrationTarget target)
+    {
+      IterateAndRegister(lookup, predicate, target);
+      return this;
+    }
+
+    public IRegistrationContainer RegisterDecorator<TAbstract, TConcrete>(TConcrete instance, string key = null, bool shouldReplace = false) where TAbstract : class where TConcrete : class, TAbstract
+    {
+      throw new NotImplementedException();
+    }
+
+    public IRegistrationContainer RegisterDecorator<TAbstract, TConcrete>(RegistrationLifeTime registrationLifeTime = RegistrationLifeTime.Transient, string key = null, bool shouldReplace = false) where TAbstract : class where TConcrete : class, TAbstract
+    {
+      throw new NotImplementedException();
+    }
+
+    public IRegistrationContainer RegisterDecorator(Type abstractType, Type decorator,
+        RegistrationLifeTime registrationLifeTime = RegistrationLifeTime.Transient, string key = null, bool shouldReplace = false)
+    {
+      throw new NotImplementedException();
+    }
+
+    public IRegistrationContainer Register<TAbstract, TConcrete>(TConcrete instance, Action<TAbstract> cleanupAction = null,
+        string key = null, bool shouldReplace = false) where TAbstract : class where TConcrete : class, TAbstract
+    {
+      _container.RegisterInstance<TAbstract>(instance);
+
+      return this;
+    }
+
+    public IRegistrationContainer Register<TAbstract, TConcrete>(
+        RegistrationLifeTime registrationLifeTime = RegistrationLifeTime.Transient,
+        Action<TAbstract> cleanupAction = null,
+        string key = null, bool shouldReplace = false) where TAbstract : class where TConcrete : class, TAbstract
+    {
+      _container.Register<TAbstract, TConcrete>(registrationLifeTime.ToContainerLifeTime());
+
+      return this;
+    }
+
+    public IRegistrationContainer RegisterFactory<TAbstract>(Func<IResolutionContainer, TAbstract> factoryFunc,
+        RegistrationLifeTime registrationLifeTime = RegistrationLifeTime.Transient, string key = null, bool shouldReplace = false) where TAbstract : class
+
+    {
+      SimpleInjectorIocResolverAdapter c =  SimpleInjectorIocResolverAdapter.Adapt(_container);
+      _container.Register<TAbstract>(() => factoryFunc(c), registrationLifeTime.ToContainerLifeTime());
+      return this;
+    }
+
+    public IRegistrationContainer Register(Type abstractType, Type concreteType,
+        RegistrationLifeTime registrationLifeTime = RegistrationLifeTime.Transient, string key = null, bool shouldReplace = false)
+    {
+      _container.Register(abstractType, concreteType, registrationLifeTime.ToContainerLifeTime());
+
+      return this;
+    }
+
+    public IRegistrationContainer Register(Type concreteType, RegistrationTarget target,
+        RegistrationLifeTime registrationLifeTime = RegistrationLifeTime.Transient, string key = null, bool shouldReplace = false)
+    {
+      var serviceTypeCondition = TargetResolver.Resolve(target);
+
+      _container.Register( concreteType);
+      return this;
+    }
+
+    private void IterateAndRegister(ILookup<RegistrationInfo, Type> lookup, Func<Type, bool> typePredicate,
+        RegistrationTarget target)
+    {
+      if (lookup == null || typePredicate == null)
+        return;
+
+      var serviceTypeCondition = TargetResolver.Resolve(target);
+
+      foreach (var group in lookup)
+      {
+        if (group.Key.Matches(RegistrationLifeTime.None))
+          continue;
+
+        var matchingTypes = group.Where(t => t != null)
+            .Where(typePredicate);
+
+        var lifetime = group.Key.LifeTime.ToContainerLifeTime();
+        var key = group.Key.Key;
+
+        foreach(Type t in matchingTypes)
+        {
+          var serviceType= t.GetInterfaces().First().IsGenericType ? t.GetInterfaces().First().GetGenericTypeDefinition() : t.GetInterfaces().First();
+          _container.Register(serviceType, t,lifestyle: lifetime );
+        }
+        
+      }
+    }
+
+    public static SimpleInjectorIocContainerAdapter Adapt(Container container)
+    {
+      return new SimpleInjectorIocContainerAdapter(container);
+    }
+
+    private string ResolveKey(string key)
+    {
+      if (!string.IsNullOrWhiteSpace(key))
+        return key;
+
+      return null;
+    }
+  }
+}

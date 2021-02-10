@@ -3,7 +3,6 @@ using DryIoc;
 using DryIoc.Microsoft.DependencyInjection;
 using Infrabel.ICT.Framework.Extended.AspNetCore.Extension;
 using Infrabel.ICT.Framework.Extended.AspNetCore.Resolver;
-using Infrabel.ICT.Framework.Extended.DryIoc;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Serilog;

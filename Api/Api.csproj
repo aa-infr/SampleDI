@@ -36,16 +36,18 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="SimpleInjector" Version="5.2.1" />
+    <PackageReference Include="SimpleInjector.Integration.AspNetCore.Mvc" Version="5.1.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj" />
-    <ProjectReference Include="..\DryIoc\DryIoc.csproj" />
     <ProjectReference Include="..\framework\AspNetCore\AspNetCore.csproj" />
     <ProjectReference Include="..\Framework\Core\Framework.csproj" />
     <ProjectReference Include="..\Framework\EntityFramework\EntityFramework.csproj" />
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+    <ProjectReference Include="..\SimpleInjectorIoc\SimpleInjectorIoc.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -15,7 +15,8 @@ namespace Infrabel.ICT.Framework.Extended.AspNetCore
 
             container.BulkRegisterByMatchingEndName(types, "Service", RegistrationTarget.Interfaces);
             container.Register<IHttpContextAccessor, HttpContextAccessor>(RegistrationLifeTime.Singleton);
-            container.RegisterFactory(c => (IUserContext)new UserContext(() => c.Resolve<IHttpContextAccessor>().HttpContext, c.Resolve<IRolePoliciesService>(), c.Resolve<IDateService>()), RegistrationLifeTime.Singleton);
+            container.RegisterFactory(c => (IUserContext)new UserContext(() => c.Resolve<IHttpContextAccessor>().HttpContext, c.Resolve<IRolePoliciesService>(), c.Resolve<IDateService>())
+                                    , RegistrationLifeTime.Singleton);
         }
     }
 }

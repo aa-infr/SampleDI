@@ -7,7 +7,7 @@ using System.Reflection;
 namespace Infrabel.ICT.Framework.Service
 {
     [IoCRegistration(RegistrationLifeTime.Singleton)]
-    internal sealed class EnvironmentInfoService : IEnvironmentInfoService
+    public class EnvironmentInfoService : IEnvironmentInfoService
     {
         private static readonly string HostNameKey = "HostName";
         private static readonly string EntryAssemblyNameKey = "EntryAssembly";

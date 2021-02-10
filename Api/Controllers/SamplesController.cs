@@ -11,13 +11,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ICT.Template.Api.Controllers
 {
-    [ApiController]
-    [Route("samples")]
-    public class SamplesController : ControllerBase
+  [ApiController]
+  [Route("samples")]
+  public class SamplesController : ControllerBase
     {
         private readonly ISampleService _sampleService;
 
-        public SamplesController(ISampleService sampleService)
+        public SamplesController(ISampleService sampleService, IList<IClaimsTransformation> transformer)
         { _sampleService = sampleService ?? throw new ArgumentNullException(nameof(sampleService)); }
 
         [HttpGet(Name = nameof(GetAllSamples))]
