@@ -19,6 +19,9 @@ using Microsoft.OpenApi.Models;
 using JsonOptions = Infrabel.ICT.Framework.Extended.AspNetCore.Option.JsonOptions;
 using SimpleInjector.Lifestyles;
 using Infrabel.ICT.Framework.Extended.EntityFramework.Configuration;
+using System.Collections.Generic;
+using System;
+using Infrabel.ICT.Framework.Extended.EntityFramework;
 
 namespace ICT.Template.Api
 {
@@ -49,11 +52,9 @@ namespace ICT.Template.Api
             container.Options.DefaultScopedLifestyle = new AsyncScopedLifestyle();
             container.Options.AllowOverridingRegistrations = true;
 
-            container.Register(typeof(IOptionsResolver<>), typeof(OptionsResolver<>), Lifestyle.Singleton);
-            //container.Collection.Register<EntityBaseConfiguration>(new[] { typeof(EntityBaseConfiguration).Assembly });
-            //container.re
 
-            SimpleInjectorIocBootstrapper.GetInstance()
+
+      SimpleInjectorIocBootstrapper.GetInstance()
                 .Initialize(container, _optionsResolver, _connectionStringResolver)
                 .LoadModules<Infrabel.ICT.Framework.RegistrationModule>()
                 .LoadModules<Infrabel.ICT.Framework.Extended.AspNetCore.RegistrationModule>()

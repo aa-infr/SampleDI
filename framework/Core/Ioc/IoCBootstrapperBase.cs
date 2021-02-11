@@ -38,7 +38,8 @@ namespace Infrabel.ICT.Framework.Ioc
                 _genericContainer.Register<IResolutionContainer, IResolutionContainer>(AdaptResolver(scope));
                 _genericContainer.Register<IConnectionStringResolver, IConnectionStringResolver>(connectionStringResolver);
                 _genericContainer.Register<IOptionsResolver, IOptionsResolver>(optionsResolver);
-                _genericContainer.Register(typeof(OptionsResolver<>), RegistrationTarget.Interfaces, RegistrationLifeTime.Singleton);
+                _genericContainer.Register(typeof(IOptionsResolver<>), typeof(OptionsResolver<>), RegistrationLifeTime.Singleton);
+                //_genericContainer.Register(typeof(OptionsResolver<>), RegistrationTarget.Interfaces, RegistrationLifeTime.Singleton);
                 _optionsResolver = optionsResolver;
                 _initialized = true;
             }
