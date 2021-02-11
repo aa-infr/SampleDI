@@ -1,6 +1,6 @@
 ﻿namespace Infrabel.ICT.Framework.Service
 {
-    internal class OptionsResolver<TOptions> : IOptionsResolver<TOptions> where TOptions : class, new()
+    public class OptionsResolver<TOptions> : IOptionsResolver<TOptions> where TOptions : class, new()
     {
         private readonly IOptionsResolver _resolver;
 

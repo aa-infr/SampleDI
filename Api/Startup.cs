@@ -18,6 +18,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using JsonOptions = Infrabel.ICT.Framework.Extended.AspNetCore.Option.JsonOptions;
 using SimpleInjector.Lifestyles;
+using Infrabel.ICT.Framework.Extended.EntityFramework.Configuration;
 
 namespace ICT.Template.Api
 {
@@ -47,6 +48,10 @@ namespace ICT.Template.Api
             // The recommendation is to use AsyncScopedLifestyle in for applications that solely consist of a Web API(or other asynchronous technologies such as ASP.NET Core)
             container.Options.DefaultScopedLifestyle = new AsyncScopedLifestyle();
             container.Options.AllowOverridingRegistrations = true;
+
+            container.Register(typeof(IOptionsResolver<>), typeof(OptionsResolver<>), Lifestyle.Singleton);
+            //container.Collection.Register<EntityBaseConfiguration>(new[] { typeof(EntityBaseConfiguration).Assembly });
+            //container.re
 
             SimpleInjectorIocBootstrapper.GetInstance()
                 .Initialize(container, _optionsResolver, _connectionStringResolver)
