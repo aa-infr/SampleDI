@@ -22,6 +22,11 @@ using Infrabel.ICT.Framework.Extended.EntityFramework.Configuration;
 using System.Collections.Generic;
 using System;
 using Infrabel.ICT.Framework.Extended.EntityFramework;
+using ICT.Template.Infrastructure.Data;
+using Infrabel.ICT.Framework.Entity;
+using ICT.Template.Api.Controllers;
+using ICT.Template.Core.Services;
+using ICT.Template.Infrastructure.Services;
 
 namespace ICT.Template.Api
 {
@@ -50,17 +55,20 @@ namespace ICT.Template.Api
             // Default lifestyle scoped + async
             // The recommendation is to use AsyncScopedLifestyle in for applications that solely consist of a Web API(or other asynchronous technologies such as ASP.NET Core)
             container.Options.DefaultScopedLifestyle = new AsyncScopedLifestyle();
-            container.Options.AllowOverridingRegistrations = true;
+            //container.Options.AllowOverridingRegistrations = true;
+            //container.Options.EnableAutoVerification = false;
 
+            container.Register<SamplesController>();
+            container.RegisterInstance<Func<IEnumerable<EntityBaseConfiguration>>>(() => container.GetAllInstances<EntityBaseConfiguration>());
 
-
-      SimpleInjectorIocBootstrapper.GetInstance()
-                .Initialize(container, _optionsResolver, _connectionStringResolver)
-                .LoadModules<Infrabel.ICT.Framework.RegistrationModule>()
-                .LoadModules<Infrabel.ICT.Framework.Extended.AspNetCore.RegistrationModule>()
-                .LoadModules<Infrabel.ICT.Framework.Extended.EntityFramework.RegistrationModule>()
-                .LoadModules<ICT.Template.Api.RegistrationModule>()
-                .BuildContainer();
+            SimpleInjectorIocBootstrapper.GetInstance()
+                    .Initialize(container, _optionsResolver, _connectionStringResolver)
+                    .LoadModules<Infrabel.ICT.Framework.RegistrationModule>()
+                    .LoadModules<Infrabel.ICT.Framework.Extended.AspNetCore.RegistrationModule>()
+                    .LoadModules<Infrabel.ICT.Framework.Extended.EntityFramework.RegistrationModule>()
+                    .LoadModules<ICT.Template.Infrastructure.RegistrationModule>()
+                    .LoadModules<ICT.Template.Api.RegistrationModule>()
+                    .BuildContainer();
 
 
             // Replace the built-in IControllerActivator with a custom one that forwards the call to SimpleInjectorIoc.

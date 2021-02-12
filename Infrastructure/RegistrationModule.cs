@@ -17,9 +17,9 @@ namespace ICT.Template.Infrastructure
         {
             var types = assemblyTypesResolver.Resolve(Assembly.GetExecutingAssembly());
 
-            container.BulkRegisterByMatchingType(typeof(IRepository<>), types, RegistrationTarget.Interfaces);
+            //container.BulkRegisterByMatchingType(typeof(IRepository<>), types, RegistrationTarget.Interfaces);
             container.BulkRegisterByMatchingEndName(types, "Service", RegistrationTarget.Interfaces);
-            container.BulkRegisterByMatchingType(typeof(IConfigurationRuleSet), types, RegistrationTarget.Interfaces);
+            //container.BulkRegisterByMatchingType(typeof(IConfigurationRuleSet), types, RegistrationTarget.Interfaces);
             container.BulkRegisterByMatchingType<EntityBaseConfiguration>(types, RegistrationTarget.AbstractBases);
             container.RegisterDbContext(connectionString => new DbContextOptionsBuilder<SampleDbContext>().UseInMemoryDatabase(connectionString)
                 .Options);

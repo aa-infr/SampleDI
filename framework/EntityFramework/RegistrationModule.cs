@@ -12,7 +12,7 @@ namespace Infrabel.ICT.Framework.Extended.EntityFramework
         {
             var types = assemblyTypesResolver.Resolve();
             container.BulkRegisterByMatchingEndName(types, "Service", RegistrationTarget.Interfaces);
-            container.BulkRegisterByMatchingType(typeof(IConfigurationRuleSet), types, RegistrationTarget.Interfaces);
+            //container.BulkRegisterByMatchingType(typeof(IConfigurationRuleSet), types, RegistrationTarget.Interfaces);
             container.Register<IConfigurationsFactory, ConfigurationsFactory>(RegistrationLifeTime.Singleton);
             container.Register<IDbContextResolver, DbContextResolver>(RegistrationLifeTime.Scoped);
             container.Register<IDbContextFactory, DbContextFactory>(RegistrationLifeTime.Scoped);

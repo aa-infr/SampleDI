@@ -17,7 +17,7 @@ namespace ICT.Template.Api.Controllers
     {
         private readonly ISampleService _sampleService;
 
-        public SamplesController(ISampleService sampleService, IList<IClaimsTransformation> transformer)
+        public SamplesController(ISampleService sampleService)
         { _sampleService = sampleService ?? throw new ArgumentNullException(nameof(sampleService)); }
 
         [HttpGet(Name = nameof(GetAllSamples))]

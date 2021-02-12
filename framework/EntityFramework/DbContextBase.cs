@@ -23,7 +23,7 @@ namespace Infrabel.ICT.Framework.Extended.EntityFramework
         protected readonly IDateService DateService;
         private readonly LoggerFactory _loggerFactory = new LoggerFactory(new[] { new DebugLoggerProvider() });
         protected readonly IUserContext UserContext;
-        internal LanguageEntityConfiguration LanguageConfiguration;
+        //internal LanguageEntityConfiguration LanguageConfiguration;
 
         protected DbContextBase(IDateService dateService, IUserContext userContext, DbContextOptions options,
             IConfigurationsFactory configurationsFactory) : base(options)
@@ -107,13 +107,13 @@ namespace Infrabel.ICT.Framework.Extended.EntityFramework
 
                 #region add lexicon configuration
 
-                if(genType != null && typeof(ILanguage).IsAssignableFrom(genType))
-                    // duplicate configuration for Language entity
-                    LanguageConfiguration = new LanguageEntityConfiguration(
-                        configuration.GetDataBaseProvider(),
-                        configuration.GetTableAlias(),
-                        configuration.GetSchemaName(),
-                        configuration.GetTableName());
+                //if(genType != null && typeof(ILanguage).IsAssignableFrom(genType))
+                //    // duplicate configuration for Language entity
+                //    LanguageConfiguration = new LanguageEntityConfiguration(
+                //        configuration.GetDataBaseProvider(),
+                //        configuration.GetTableAlias(),
+                //        configuration.GetSchemaName(),
+                //        configuration.GetTableName());
                 #endregion add lexicon configuration
             }
         }

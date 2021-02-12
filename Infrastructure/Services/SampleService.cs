@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using ICT.Template.Core.Entities;
-using ICT.Template.Core.Repositories;
 using ICT.Template.Core.Services;
 using ICT.Template.Core.Services.Models;
 using Infrabel.ICT.Framework.Exception;
