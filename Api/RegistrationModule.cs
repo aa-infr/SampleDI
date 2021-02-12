@@ -15,7 +15,7 @@ namespace ICT.Template.Api
             var types = assemblyTypesResolver.Resolve(Assembly.GetExecutingAssembly());
             container.BulkRegisterByMatchingEndName(types, "Service", RegistrationTarget.Interfaces);
             container.BulkRegisterByMatchingType<IIdentityClaimRefiner>(types, RegistrationTarget.Interfaces);
-            container.Register<IClaimsTransformation, ClaimsRefinementTransformation>(RegistrationLifeTime.Transient);
+            //container.Register<IClaimsTransformation, ClaimsRefinementTransformation>(RegistrationLifeTime.Transient);
 
 
 
