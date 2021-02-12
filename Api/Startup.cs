@@ -27,6 +27,7 @@ using Infrabel.ICT.Framework.Entity;
 using ICT.Template.Api.Controllers;
 using ICT.Template.Core.Services;
 using ICT.Template.Infrastructure.Services;
+using System.Reflection;
 
 namespace ICT.Template.Api
 {
@@ -60,6 +61,7 @@ namespace ICT.Template.Api
 
             container.Register<SamplesController>();
             container.RegisterInstance<Func<IEnumerable<EntityBaseConfiguration>>>(() => container.GetAllInstances<EntityBaseConfiguration>());
+            container.Collection.Register<EntityBaseConfiguration>(Assembly.GetExecutingAssembly());
 
             SimpleInjectorIocBootstrapper.GetInstance()
                     .Initialize(container, _optionsResolver, _connectionStringResolver)
