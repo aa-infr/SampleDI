@@ -74,7 +74,7 @@ namespace ICT.Template.Api
 
             container.RegisterInstance<Func<DbContextBase>>(() => container.GetInstance<SampleDbContext>());
 
-
+            container.RegisterInstance<Func<IIdentityClaimRefiner[]>>(() => Array.Empty<IIdentityClaimRefiner>() ); ;
 
 
       SimpleInjectorIocBootstrapper.GetInstance()
