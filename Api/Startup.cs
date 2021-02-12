@@ -60,10 +60,24 @@ namespace ICT.Template.Api
             //container.Options.EnableAutoVerification = false;
 
             container.Register<SamplesController>();
+            //container.Register<ISampleService, SampleService>();
             container.RegisterInstance<Func<IEnumerable<EntityBaseConfiguration>>>(() => container.GetAllInstances<EntityBaseConfiguration>());
             container.Collection.Register<EntityBaseConfiguration>(Assembly.GetExecutingAssembly());
 
-            SimpleInjectorIocBootstrapper.GetInstance()
+            //container.Collection.Register<IList<KeyValuePair<string, DbContextBase>>>(Assembly.GetExecutingAssembly());
+
+            container.Options.ResolveUnregisteredConcreteTypes = true;
+            var dbs = new List<KeyValuePair<string, Func<DbContextBase>>>();
+            var kvp = new KeyValuePair<string, Func<DbContextBase>>("SampleDbContext", () => container.GetInstance<SampleDbContext>());
+            dbs.Add(kvp);
+            container.RegisterInstance<IList<KeyValuePair<string, Func<DbContextBase>>>>(dbs);
+
+            container.RegisterInstance<Func<DbContextBase>>(() => container.GetInstance<SampleDbContext>());
+
+
+
+
+      SimpleInjectorIocBootstrapper.GetInstance()
                     .Initialize(container, _optionsResolver, _connectionStringResolver)
                     .LoadModules<Infrabel.ICT.Framework.RegistrationModule>()
                     .LoadModules<Infrabel.ICT.Framework.Extended.AspNetCore.RegistrationModule>()

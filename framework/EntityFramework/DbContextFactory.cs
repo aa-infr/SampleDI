@@ -9,11 +9,11 @@ namespace Infrabel.ICT.Framework.Extended.EntityFramework
     [IoCRegistration(RegistrationLifeTime.Scoped)]
     public class DbContextFactory : IDbContextFactory
     {
-        private readonly IList<KeyValuePair<string, DbContextBase>> _namedResolvers;
-        private readonly DbContextBase _singleResolver;
+        private readonly IList<KeyValuePair<string, Func<DbContextBase>>> _namedResolvers;
+        private readonly Func<DbContextBase> _singleResolver;
         private readonly IDbContextResolver _resolver;
 
-        public DbContextFactory(IList<KeyValuePair<string, DbContextBase>> namedResolvers,DbContextBase singleResolver, IDbContextResolver resolver)
+        public DbContextFactory(IList<KeyValuePair<string, Func<DbContextBase>>> namedResolvers, Func<DbContextBase> singleResolver, IDbContextResolver resolver)
         {
             _namedResolvers = namedResolvers;
             _singleResolver = singleResolver;
@@ -25,14 +25,14 @@ namespace Infrabel.ICT.Framework.Extended.EntityFramework
             var contextName = _resolver.Resolve<T>();
 
             if(string.IsNullOrWhiteSpace(contextName))
-                return _singleResolver;
+                return _singleResolver();
 
             var resolver = _namedResolvers.FirstOrDefault(c => string.Equals(c.Key, contextName, StringComparison.OrdinalIgnoreCase));
 
             if(resolver.Equals(default(KeyValuePair<string, Func<DbContextBase>>)))
                 throw new InvalidOperationException($"Unable to resolve the context name {contextName}");
 
-            return resolver.Value;
+            return resolver.Value();
         }
     }
 }
