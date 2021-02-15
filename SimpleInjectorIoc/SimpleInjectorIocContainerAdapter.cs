@@ -121,7 +121,9 @@ namespace Infrabel.ICT.Framework.Extended.SimpleInjectorIoc
     {
       var serviceTypeCondition = TargetResolver.Resolve(target);
 
-      _container.Register( concreteType);
+      //_container.Register(concreteType);
+      //_container.Register( concreteType.UnderlyingSystemType, () => concreteType, registrationLifeTime.ToContainerLifeTime());
+      _container.Register(concreteType.GetType() , () => concreteType, registrationLifeTime.ToContainerLifeTime());
       return this;
     }
 

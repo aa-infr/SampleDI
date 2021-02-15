@@ -64,8 +64,9 @@ namespace ICT.Template.Api
             container.RegisterInstance<Func<IEnumerable<EntityBaseConfiguration>>>(() => container.GetAllInstances<EntityBaseConfiguration>());
             container.Collection.Register<EntityBaseConfiguration>(Assembly.GetExecutingAssembly());
 
-            //container.Collection.Register<IList<KeyValuePair<string, DbContextBase>>>(Assembly.GetExecutingAssembly());
+      //container.Collection.Register<IList<KeyValuePair<string, DbContextBase>>>(Assembly.GetExecutingAssembly());
 
+            //container.Register<SampleDbContext>(Lifestyle.Scoped);
             container.Options.ResolveUnregisteredConcreteTypes = true;
             var dbs = new List<KeyValuePair<string, Func<DbContextBase>>>();
             var kvp = new KeyValuePair<string, Func<DbContextBase>>("SampleDbContext", () => container.GetInstance<SampleDbContext>());
